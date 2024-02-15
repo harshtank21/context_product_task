@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="order_line_one_wizard_form_view">
+        <field name="name">order.line.wizard.form.view</field>
+        <field name="model">order.line.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="order_line_ids" widget="section_and_note_one2many" readonly='1'>
+                    <tree>
+                        <field name="product_template_id" string="Product"/>
+                        <field name="name"/>
+                        <field name="product_uom_qty"/>
+                        <field name="qty_delivered"/>
+                        <field name="qty_invoiced"/>
+                        <field name="price_unit"/>
+                        <field name="tax_id"/>
+                        <field name="price_subtotal"/>
+                    </tree>
+                </field>
+
+                <footer>
+                    <button special="cancel" string="Cancel" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="order_line_wizard_wizard_action_window" model="ir.actions.act_window">
+        <field name="name">new task</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">order.line.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

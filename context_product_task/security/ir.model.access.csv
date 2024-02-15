@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+context_product_task.access_order_line_wizard,access_order_line_wizard,context_product_task.model_order_line_wizard,base.group_user,1,1,1,1

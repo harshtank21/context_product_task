@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    <record model="ir.ui.view" id="res_partner_inherit_family_view">-->
+    <!--        <field name="name">res.partner.inherit.family.view</field>-->
+    <!--        <field name="model">res.partner</field>-->
+    <!--        <field name="inherit_id" ref="base.view_partner_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//notebook/page[@name='internal_notes']" position='after'>-->
+    <!--                <page string="Family Member" name="family_member">-->
+    <!--                    hello-->
+    <!--                </page>-->
+    <!--                <field />-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+    <record id="br_partner_fields_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page string="Family Member" name="family_member"  >
+                    <field name="family_member_ids" widget="section_and_note_one2many" mode="tree" context="{'default_currect':'is_child'}">
+                        <tree>
+                            <field name="display_name" string="Name"/>
+                            <field name="currect" string="Currect"/>
+                            <field name="function" invisible="1"/>
+                            <field name="phone" class="o_force_ltr" optional="show"/>
+                            <field name="email" optional="show"/>
+                            <field name="user_id" optional="show" widget="many2one_avatar_user"
+                                   domain="[('share', '=', False)]"/>
+                            <field name="city" optional="show"/>
+                            <field name="state_id" optional="hide" readonly="1"/>
+                            <field name="country_id" optional="show" readonly="1"/>
+                            <field name="vat" optional="hide" readonly="1"/>
+                            <field name="category_id" optional="hide" widget="many2many_tags"
+                                   options="{'color_field': 'color'}"/>
+                            <field name="company_id" groups="base.group_multi_company" readonly="1"/>
+                            <field name="is_company" invisible="1"/>
+                            <field name="parent_id" invisible="1" readonly="1"/>
+                            <field name="active" invisible="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position='after'>
+                <field name="currect"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

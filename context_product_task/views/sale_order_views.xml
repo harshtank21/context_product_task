@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit.website.sale</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_preview_sale_order']" position="after">
+                <button name="action_show_date" type="object" class="oe_stat_button" icon="fa-align-right">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Order</span>
+                        <span class="o_stat_text">line</span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="price_view"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
